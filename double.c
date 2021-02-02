@@ -1,3 +1,19 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
 #include <stdio.h>
 #include<stdlib.h>
 struct node
@@ -9,7 +25,7 @@ struct node
 struct node *head;
 void insert_front();
 void insert_last();
-void delete_fron(t;
+void delete_front();
 void delete_last();
 void display();
 void search();
@@ -67,10 +83,10 @@ void main()
                          
                          if(head==NULL)
                          {
-                             ptr->next=NULL;
-                             ptr->prev=NULL;
-                             ptr->head=item;
-                             head=ptr;
+                            ptr->next = NULL;  
+                            ptr->prev=NULL;  
+                            ptr->data=item;  
+                            head=ptr;  
                          }
                          else
                          {
@@ -80,7 +96,7 @@ void main()
                              head->prev=ptr;
                              head=ptr;
                          }
-                         print("\nNode inserted\n");
+                         printf("\nNode inserted\n");
                      }
                          
                  }
@@ -93,7 +109,7 @@ void main()
                      ptr=(struct node *)malloc(sizeof(struct node));
                      if(ptr==NULL)
                      {
-                         print("\n overflow");
+                         printf("\n overflow");
                      }
                      else
                      {
@@ -109,7 +125,7 @@ void main()
                          else
                          {
                              temp=head;
-                             while(temp->next1=NULL)
+                             while(temp -> next != NULL)
                              {
                                  temp=temp->next;
                              }
@@ -138,7 +154,85 @@ void main()
                      else
                      {
                          ptr=head;
-                         if()
+                         if(ptr->next !=NULL)
+                         {
+                             ptr=ptr->next;
+                         }
+                         ptr->prev->next=NULL;
+                         free(ptr);
+                         printf("\nnode deleted\n");
+                     }
+                 }
+                 
+                 
+                 void delete_front()
+                 {
+                     struct node *ptr;
+                     if(head==NULL)
+                     {
+                         printf("\nunderflow");
+                     }
+                     else if(head->next==NULL)
+                     {
+                         head=NULL;
+                         free(head);
+                         printf("\n node deleted");
+                     }
+                     else
+                     {
+                         ptr=head;
+                         head=head->next;
+                         head->prev=NULL;
+                         free(ptr);
+                         printf("\n node deleted");
+                     }
+                 }
+                 
+                 
+                 void display()
+                 {
+                     struct node *ptr;
+                     ptr=head;
+                     while(ptr != NULL)
+                     {
+                         printf("%d\n",ptr->data);
+                         ptr=ptr->next;
+                     }
+                 }
+                 
+                 
+                 void search()
+                 {
+                     struct node *ptr;
+                     int item,i=0,flag;
+                     ptr=head;
+                     if(ptr==NULL)
+                     {
+                         printf("\n empty list");
+                     }
+                     else
+                     {
+                         printf("\n enter item to be search\n");
+                         scanf("%d",&item);
+                         while(ptr !=  NULL)
+                         {
+                             if(ptr->data==item)
+                             {
+                                 printf("\nitem found at the location %d",i+1);
+                                 flag=0;
+                                 break;
+                             }
+                             else
+                             {
+                                 flag=1;
+                             }
+                             i++;
+                             ptr=ptr->next;
+                         }
+                         if(flag==1)
+                         {
+                             printf("\n item not found\n");
+                         }
                      }
                  }
                  
